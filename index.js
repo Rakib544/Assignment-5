@@ -57,23 +57,36 @@ const showFullDetails = (mealId) => {
             //adding two arrays value
             const ingredients = measure.map((item, index) => {
                 return `${measure[index]} ${ingredient[index]}`
-            }) 
+            })
 
             //removing empty array
             const filterIngredients = ingredients.filter(item => {
                 return item.trim().length > 0;
             })
 
-            
+
             const fullDetailsDiv = document.getElementById('full-details');
+            fullDetailsDiv.classList.add('card')
             fullDetailsDiv.innerHTML = `
-                    <div class="card">
                         <img src=${data.meals[0].strMealThumb} class="card-img-top height" alt="...">
                         <div class="card-body">
-                            <h4 class="card-title"></h4>
-                            <p>✅ </p>
+                            <h4 class="card-title">${data.meals[0].strMeal}</h4>
+                            <h2>Ingredients</h2>
                         </div>
-                    </div>
             `
+            showIngredients(filterIngredients)
         })
+}
+
+
+//show ingredient list functionality
+const showIngredients = (filterIngredients) => {
+    filterIngredients.forEach(item => {
+        console.log(item)
+        const list = document.createElement('p');
+        list.classList.add('ps-2')
+        list.innerText = `✅ ${item}`
+        console.log(list)
+        document.getElementById('full-details').appendChild(list);
+    })
 }
