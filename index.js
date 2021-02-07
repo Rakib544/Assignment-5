@@ -15,6 +15,7 @@ const searchFood = () => {
         })
     document.getElementById('search-input').value = "";
     document.getElementById('parent-div').innerHTML = ``;
+    document.getElementById('full-details').innerHTML = ``;
 
 }
 
@@ -49,7 +50,7 @@ const showFullDetails = (mealId) => {
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+
             //slicing objects value and convert them into array
             const ingredient = Object.values(data.meals[0]).slice(9, 29);
             const measure = Object.values(data.meals[0]).slice(29, 49);
@@ -64,18 +65,23 @@ const showFullDetails = (mealId) => {
                 return item.trim().length > 0;
             })
 
-
-            const fullDetailsDiv = document.getElementById('full-details');
-            fullDetailsDiv.classList.add('card')
-            fullDetailsDiv.innerHTML = `
-                        <img src=${data.meals[0].strMealThumb} class="card-img-top height" alt="...">
-                        <div class="card-body">
-                            <h4 class="card-title">${data.meals[0].strMeal}</h4>
-                            <h2>Ingredients</h2>
-                        </div>
-            `
+            showSelectedItemInfo(data.meals[0]);
             showIngredients(filterIngredients)
         })
+}
+
+
+//show selected item full information
+const showSelectedItemInfo = (item) => {
+    const fullDetailsDiv = document.getElementById('full-details');
+        fullDetailsDiv.classList.add('card', 'border-0')
+        fullDetailsDiv.innerHTML = `
+                    <img src=${item.strMealThumb} class="card-img-top height" alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title">${item.strMeal}</h3>
+                        <h5>Ingredients</h5>
+                    </div>
+        `
 }
 
 

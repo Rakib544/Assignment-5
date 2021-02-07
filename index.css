@@ -3,6 +3,7 @@
 }
 
 .height {
+    max-width: 588px;
     height: 322px;
     object-fit: cover;
 }

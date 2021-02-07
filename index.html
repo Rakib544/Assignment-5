@@ -23,6 +23,7 @@
                     <li class="nav-item"><a class="nav-link text-dark fw-bold" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link text-dark fw-bold" href="#">About</a></li>
                     <li class="nav-item"><a class="nav-link text-dark fw-bold" href="#">Recipes</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-bold" href="#">Blog</a></li>
                 </ul>
             </div>
         </nav>
@@ -32,15 +33,17 @@
 
     <!--main section start here-->
     <main class="container">
+        <section class="mt-3">
+            <div id="full-details" class="col-md-6 mx-auto"></div>
+        </section>
+
         <section class="col-lg-5 col-md-10 col-sm-12 mx-auto my-3">
             <div class="input-group">
                 <input id="search-input" class="form-control" placeholder="Search for meal...">
                 <button onclick="searchFood()" class="btn btn-warning">Search</button>
             </div>
         </section>
-        <section>
-            <div id="full-details" class="col-md-6 mx-auto"></div>
-        </section>
+       
         <section>
             <div id="parent-div" class="row row-cols-1 row-cols-md-4 g-4 my-5"></div>
         </section>
