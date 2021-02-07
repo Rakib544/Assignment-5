@@ -1,7 +1,6 @@
 //capturing input value
 const getInputValue = () => {
     const inputValue = document.getElementById('search-input').value;
-    console.log(inputValue);
     return inputValue;
 }
 
@@ -26,7 +25,7 @@ const showFood = foods => {
             const item = document.createElement('div');
             item.classList.add('col');
             item.innerHTML = `
-                <div onclick="" class="card h-100 cursor-pointer">
+                <div onclick="showFullDetails(${food.idMeal})" class="card h-100 cursor-pointer">
                     <img src=${food.strMealThumb} class="card-img-top" alt="...">
                     <div class="card-body">
                     <h4 class="card-title text-center">${food.strMeal}</h4>
@@ -46,3 +45,10 @@ const showFood = foods => {
 
 
 //handling selected food item's full information functionality 
+const showFullDetails = (mealId) => {
+    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+}
