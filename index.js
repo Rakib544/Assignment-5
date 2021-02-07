@@ -50,12 +50,27 @@ const showFullDetails = (mealId) => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            //slicing objects value and convert them into array
+            const ingredient = Object.values(data.meals[0]).slice(9, 29);
+            const measure = Object.values(data.meals[0]).slice(29, 49);
+
+            //adding two arrays value
+            const ingredients = measure.map((item, index) => {
+                return `${measure[index]} ${ingredient[index]}`
+            }) 
+
+            //removing empty array
+            const filterIngredients = ingredients.filter(item => {
+                return item.trim().length > 0;
+            })
+
+            
             const fullDetailsDiv = document.getElementById('full-details');
             fullDetailsDiv.innerHTML = `
                     <div class="card">
                         <img src=${data.meals[0].strMealThumb} class="card-img-top height" alt="...">
                         <div class="card-body">
-                            <h4 class="card-title">${data.meals[0].strMeal}</h4>
+                            <h4 class="card-title"></h4>
                             <p>✅ </p>
                         </div>
                     </div>
