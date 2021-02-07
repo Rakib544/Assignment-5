@@ -76,11 +76,11 @@ const showSelectedItemInfo = (item) => {
     const fullDetailsDiv = document.getElementById('full-details');
         fullDetailsDiv.classList.add('card', 'border-0')
         fullDetailsDiv.innerHTML = `
-                    <img src=${item.strMealThumb} class="card-img-top height" alt="...">
-                    <div class="card-body">
-                        <h3 class="card-title">${item.strMeal}</h3>
-                        <h5>Ingredients</h5>
-                    </div>
+            <img src=${item.strMealThumb} class="card-img-top height" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">${item.strMeal}</h3>
+                <h5>Ingredients</h5>
+            </div>
         `
 }
 
