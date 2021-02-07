@@ -82,11 +82,9 @@ const showFullDetails = (mealId) => {
 //show ingredient list functionality
 const showIngredients = (filterIngredients) => {
     filterIngredients.forEach(item => {
-        console.log(item)
         const list = document.createElement('p');
         list.classList.add('ps-2')
         list.innerText = `✅ ${item}`
-        console.log(list)
         document.getElementById('full-details').appendChild(list);
     })
 }
